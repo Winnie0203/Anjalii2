@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anjali.exe – Gamer Entry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #2b1155 0, #050510 45%, #020208 100%);
+      color: #fdf7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 960px;
+      background: rgba(5, 5, 18, 0.95);
+      border-radius: 24px;
+      padding: 24px 22px 20px;
+      border: 1px solid rgba(255, 0, 221, 0.4);
+      box-shadow:
+        0 0 25px rgba(255, 0, 221, 0.25),
+        0 0 40px rgba(0, 252, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 0, 221, 0.18), transparent 60%),
+        radial-gradient(circle at 90% 100%, rgba(0, 255, 255, 0.18), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #ff69f8;
+      opacity: 0.9;
+    }
+
+    .status-pill {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.6);
+      color: #c9ffff;
+      background: rgba(1, 35, 46, 0.7);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    /* LEFT SIDE: AVATAR + TEXT */
+
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-radius: 18px;
+      padding: 16px;
+      background: radial-gradient(circle at top left, #21133a, #070513 70%);
+      border: 1px solid rgba(145, 87, 255, 0.5);
+    }
+
+    .hero-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 0, 221, 0.85);
+      box-shadow:
+        0 0 18px rgba(255, 0, 221, 0.8),
+        0 0 22px rgba(0, 255, 255, 0.45);
+      flex-shrink: 0;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #ff9edc);
+      position: relative;
+    }
+
+    .avatar::after {
+      content: "🎮";
+      position: absolute;
+      bottom: -6px;
+      right: -2px;
+      font-size: 22px;
+      text-shadow: 0 0 6px #ff8cec;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-meta-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.8;
+    }
+
+    .glitch {
+      position: relative;
+      display: inline-block;
+      font-size: 24px;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow:
+        0 0 6px rgba(255, 0, 221, 0.9),
+        0 0 12px rgba(0, 255, 255, 0.8);
+      animation: glitch 1.5s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .glitch::before {
+      color: #00ffff;
+      transform: translate(-1px, 1px);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
+    .glitch::after {
+      color: #ff00dd;
+      transform: translate(1px, -1px);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0,0); }
+      20% { transform: translate(-0.5px, 0.4px); }
+      40% { transform: translate(0.8px, -0.5px); }
+      60% { transform: translate(-0.4px, 0.6px); }
+      80% { transform: translate(0.5px, -0.4px); }
+      100% { transform: translate(0,0); }
+    }
+
+    .hero-sub {
+      font-size: 12px;
+      margin-top: 6px;
+      opacity: 0.86;
+      color: #f1d6ff;
+      line-height: 1.5;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 0, 221, 0.6);
+      color: #ffd6ff;
+      background: rgba(44, 6, 45, 0.8);
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      margin-top: 6px;
+      line-height: 1.5;
+      color: #fdf1ff;
+      opacity: 0.9;
+    }
+
+    /* PRESS START BUTTON */
+
+    .start-wrap {
+      margin-top: 6px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .start-btn {
+      padding: 11px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.85);
+      background: radial-gradient(circle at top, #00ffff, #007a8a);
+      color: #021015;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow:
+        0 0 16px rgba(0, 255, 255, 0.8),
+        0 0 24px rgba(255, 0, 221, 0.4);
+      position: relative;
+      overflow: hidden;
+      animation: pulse-start 1.4s ease-in-out infinite;
+    }
+
+    .start-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .start-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,
+        rgba(255,255,255,0.45),
+        transparent 40%,
+        transparent 60%,
+        rgba(255,255,255,0.4));
+      transform: translateX(-100%);
+      pointer-events: none;
+      animation: shine 2.4s linear infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      50% { transform: translateX(10%); }
+      100% { transform: translateX(120%); }
+    }
+
+    @keyframes pulse-start {
+      0%, 100% { transform: translateY(0); box-shadow: 0 0 14px rgba(0,255,255,0.6); }
+      50% { transform: translateY(-1px); box-shadow: 0 0 24px rgba(0,255,255,0.96); }
+    }
+
+    .start-btn.disabled {
+      opacity: 0.45;
+      cursor: default;
+      animation: none;
+      box-shadow: none;
+      background: linear-gradient(135deg, #12363a, #051a23);
+      color: #9fd6e0;
+      border-color: rgba(0, 255, 255, 0.5);
+    }
+
+    .start-btn.disabled::before {
+      display: none;
+    }
+
+    /* RIGHT SIDE: LOADOUT & CONSOLE */
+
+    .right-panel {
+      border-radius: 18px;
+      padding: 14px;
+      background: radial-gradient(circle at top right, #1c1236, #05030f 70%);
+      border: 1px solid rgba(0, 255, 255, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.82;
+      color: #aadcff;
+    }
+
+    .pill-mini {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.6);
+      font-size: 10px;
+      color: #ccf7ff;
+    }
+
+    .loadout {
+      margin-top: 4px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .trait-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 255, 0.38);
+      background: linear-gradient(135deg, rgba(3, 30, 40, 0.95), rgba(19, 8, 32, 0.95));
+      cursor: pointer;
+      font-size: 12px;
+      color: #ecfbff;
+      transition: 0.18s;
+    }
+
+    .trait-label-main {
+      font-weight: 600;
+    }
+
+    .trait-label-sub {
+      font-size: 11px;
+      opacity: 0.8;
+      color: #d7f5ff;
+    }
+
+    .trait-toggle .switch {
+      width: 34px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.6);
+      background: rgba(1, 34, 43, 0.9);
+      display: flex;
+      align-items: center;
+      padding: 1px;
+      justify-content: flex-start;
+      transition: 0.2s;
+    }
+
+    .switch-knob {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #9fdfff;
+      box-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+      transition: 0.2s;
+    }
+
+    .trait-toggle.active {
+      border-color: rgba(255, 0, 221, 0.8);
+      box-shadow: 0 0 14px rgba(255, 0, 221, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .trait-toggle.active .switch {
+      background: linear-gradient(135deg, #ff00dd, #ff7fe7);
+      justify-content: flex-end;
+    }
+
+    .trait-toggle.active .switch-knob {
+      background: #fff3ff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    }
+
+    .console {
+      margin-top: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      background: radial-gradient(circle at bottom, #04151c, #02060c 75%);
+      padding: 8px 9px 10px;
+      font-size: 11px;
+      color: #baf9ff;
+      min-height: 60px;
+    }
+
+    .console-line-prefix {
+      color: #00ffff;
+      margin-right: 4px;
+    }
+
+    .progress-text {
+      font-size: 11px;
+      opacity: 0.82;
+      margin-top: 6px;
+      color: #c8f9ff;
+    }
+
+    .discord-wrap {
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .dc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: linear-gradient(135deg, #232542, #15162c);
+      color: #dfe0ff;
+      font-size: 12px;
+      cursor: not-allowed;
+      opacity: 0.55;
+      transition: 0.2s;
+    }
+
+    .dc-btn span:first-child {
+      font-size: 16px;
+    }
+
+    .dc-btn.unlocked {
+      cursor: pointer;
+      opacity: 1;
+      border-color: rgba(88, 101, 242, 0.9);
+      background: linear-gradient(135deg, #5865f2, #8f9bff);
+      color: #ffffff;
+      box-shadow:
+        0 0 14px rgba(88, 101, 242, 0.9),
+        0 0 26px rgba(255, 0, 221, 0.6);
+      animation: pulse-dc 1.4s ease-in-out infinite;
+    }
+
+    .dc-btn.unlocked:hover {
+      transform: translateY(-2px);
+    }
+
+    @keyframes pulse-dc {
+      0%, 100% { box-shadow: 0 0 14px rgba(88,101,242,0.8); }
+      50% { box-shadow: 0 0 26px rgba(88,101,242,1); }
+    }
+
+    /* FLOATING GAMER ICONS */
+
+    .float-icon {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 0, 221, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 20%, #ffbfff, #ff00dd);
+      box-shadow: 0 0 16px rgba(255, 0, 221, 0.7);
+      opacity: 0.9;
+      font-size: 20px;
+      pointer-events: none;
+      animation: float 5s ease-in-out infinite alternate;
+    }
+
+    .float1 { top: -10px; left: 40px; animation-delay: 0s; }
+    .float2 { bottom: -10px; right: 30px; animation-delay: 0.8s;}
+    .float3 { top: 50%; right: -10px; animation-delay: 1.4s;}
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-10px) translateX(4px) scale(1.05); opacity: 1; }
+      100% { transform: translateY(6px) translateX(-4px) scale(0.97); opacity: 0.85; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 840px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .float3 {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 18px 14px 16px;
+      }
+      .hero-row {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <!-- Floating gamer icons -->
+    <div class="float-icon float1">🎧</div>
+    <div class="float-icon float2">🎮</div>
+    <div class="float-icon float3">⌨️</div>
+
+    <header>
+      <div class="logo-text">LOBBY // ANJALI.EXE</div>
+      <div class="status-pill" id="statusPill">STATUS: WAITING TO QUEUE</div>
+    </header>
+
+    <div class="grid">
+      <!-- LEFT PANEL -->
+      <section class="left-panel">
+        <div class="hero-row">
+          <div class="avatar">
+            <!-- Put Anjali's pic in same folder and change src if needed -->
+            <img src="Anjali.jpg" alt="Anjali" class="avatar-img">
+          </div>
+          <div>
+            <div class="hero-meta-title">player one</div>
+            <div class="glitch" data-text="ANJALI">ANJALI</div>
+            <p class="hero-sub">
+              Certified gamer girl, clutch machine and part-time chaos generator.
+              If she’s online, sleep schedule is officially cancelled.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-tags">
+          <span class="tag">Crosshair Queen</span>
+          <span class="tag">Late Night Lobbies</span>
+          <span class="tag">Alt+Tab Specialist</span>
+          <span class="tag">Discord Gremlin</span>
+        </div>
+
+        <p class="hero-desc">
+          You’ve been pinged to join her next match. Before you drop into
+          voice chat, you need to prove you can survive Anjali’s energy,
+          aim checks and "one last game" that never ends.
+        </p>
+
+        <div class="start-wrap">
+          <button class="start-btn" id="startBtn">
+            <span>Press&nbsp;Start</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT PANEL -->
+      <section class="right-panel">
+        <div class="right-header">
+          <span>Loadout: Gamer Traits</span>
+          <span class="pill-mini" id="armStatus">ARMED: 0 / 3</span>
+        </div>
+
+        <div id="loadoutPanel" class="loadout hidden">
+          <button class="trait-toggle" data-trait="aim">
+            <div>
+              <div class="trait-label-main">Laser Aim</div>
+              <div class="trait-label-sub">Hitscan responses, zero warm-up time.</div>
+            </div>
+            <div class="switch">
+              <div class="switch-knob"></div>
+            </div>
+          </button>
+
+          <button class="trait-toggle" data-trait="callouts">
+            <div>
+              <div class="trait-label-main">Unhinged Callouts</div>
+              <div class="trait-label-sub">“ONE HP, ONE HP, ONE HP—” (he definitely isn’t).</div>
+            </div>
+            <div class="switch">
+              <div class="switch-knob"></div>
+            </div>
+          </button>
+
+          <button class="trait-toggle" data-trait="tiltproof">
+            <div>
+              <div class="trait-label-main">Tilt-Resistant</div>
+              <div class="trait-label-sub">Loses 4 games in a row, still says “ok queue”.</div>
+            </div>
+            <div class="switch">
+              <div class="switch-knob"></div>
+            </div>
+          </button>
+
+          <button class="trait-toggle" data-trait="trash">
+            <div>
+              <div class="trait-label-main">Friendly Trash Talk</div>
+              <div class="trait-label-sub">Roasts you AND carries you. Balanced gameplay.</div>
+            </div>
+            <div class="switch">
+              <div class="switch-knob"></div>
+            </div>
+          </button>
+
+          <button class="trait-toggle" data-trait="clutch">
+            <div>
+              <div class="trait-label-main">Clutch Fiend</div>
+              <div class="trait-label-sub">Last one alive but somehow wins the round.</div>
+            </div>
+            <div class="switch">
+              <div class="switch-knob"></div>
+            </div>
+          </button>
+        </div>
+
+        <div class="console" id="consoleBox">
+          <span class="console-line-prefix">&gt;</span>
+          System ready. Hit <strong>Press Start</strong> to scan for gamer vibes…
+        </div>
+
+        <div class="progress-text" id="progressText">
+          Equip at least <strong>3 different traits</strong> to unlock the Discord invite.
+        </div>
+
+        <div class="discord-wrap">
+          <button class="dc-btn" id="dcBtn">
+            <span>💬</span>
+            <span id="dcText">Join Discord Lobby (locked)</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const loadoutPanel = document.getElementById('loadoutPanel');
+    const consoleBox = document.getElementById('consoleBox');
+    const dcBtn = document.getElementById('dcBtn');
+    const dcText = document.getElementById('dcText');
+    const armStatus = document.getElementById('armStatus');
+    const statusPill = document.getElementById('statusPill');
+    const progressText = document.getElementById('progressText');
+
+    let gameStarted = false;
+    const activeTraits = new Set();
+
+    function log(text) {
+      consoleBox.innerHTML =
+        '<span class="console-line-prefix">&gt;</span>' + text;
+    }
+
+    function updateArmed() {
+      const count = activeTraits.size;
+      armStatus.textContent = `ARMED: ${count} / 3`;
+
+      if (count >= 3) {
+        if (!dcBtn.classList.contains('unlocked')) {
+          dcBtn.classList.add('unlocked');
+          dcText.textContent = "Join Discord Lobby (unlocked)";
+          statusPill.textContent = "STATUS: QUEUE READY";
+          log("Loadout verified. Anjali has approved your gamer credentials. Enter Discord at your own risk.");
+        }
+      } else {
+        if (dcBtn.classList.contains('unlocked')) {
+          dcBtn.classList.remove('unlocked');
+          dcText.textContent = "Join Discord Lobby (locked)";
+          statusPill.textContent = "STATUS: CONFIGURING LOADOUT";
+        }
+        log(`Trait configuration updated. (${count} / 3) traits equipped.`);
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+      if (gameStarted) return;
+      gameStarted = true;
+
+      startBtn.classList.add('disabled');
+      startBtn.setAttribute('disabled', 'disabled');
+      startBtn.innerHTML = "<span>READY</span>";
+
+      loadoutPanel.classList.remove('hidden');
+      statusPill.textContent = "STATUS: CONFIGURING LOADOUT";
+      log("Game boot sequence complete. Toggle the traits that match Anjali’s energy to unlock the lobby.");
+    });
+
+    document.querySelectorAll('.trait-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!gameStarted) {
+          log("First hit Press Start. Even Anjali doesn’t speedrun the menu that hard.");
+          return;
+        }
+
+        const trait = btn.getAttribute('data-trait');
+
+        if (btn.classList.contains('active')) {
+          btn.classList.remove('active');
+          activeTraits.delete(trait);
+        } else {
+          btn.classList.add('active');
+          activeTraits.add(trait);
+        }
+
+        updateArmed();
+      });
+    });
+
+    dcBtn.addEventListener('click', () => {
+      if (!dcBtn.classList.contains('unlocked')) {
+        log("Lobby locked. Equip at least three traits that scream ‘yes, I can survive Anjali’s games’. ");
+        return;
+      }
+      // Put actual Discord link here:
+      window.location.href = "https://discord.gg/8Ww34gTX";
+    });
+  </script>
+</body>
+</html>
